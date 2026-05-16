@@ -1,0 +1,302 @@
+﻿<Window x:Class="RepoShield.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="RepoShield"
+        Height="700"
+        Width="1200"
+        WindowStartupLocation="CenterScreen"
+        Background="#070B10" Icon="/Shield.png">
+
+    <Window.Resources>
+
+        <!-- Cyber Button Style -->
+        <Style TargetType="Button">
+
+            <Setter Property="Foreground" Value="#D6F3FF"/>
+            <Setter Property="Background" Value="#12202B"/>
+            <Setter Property="BorderBrush" Value="#4FC3FF"/>
+            <Setter Property="BorderThickness" Value="1.5"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="FontFamily" Value="Consolas"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Padding" Value="14,8"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Margin" Value="6"/>
+
+            <Setter Property="Template">
+
+                <Setter.Value>
+
+                    <ControlTemplate TargetType="Button">
+
+                        <Border x:Name="border"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="10">
+
+                            <Border.Effect>
+                                <DropShadowEffect Color="#4FC3FF"
+                                                  BlurRadius="12"
+                                                  ShadowDepth="0"
+                                                  Opacity="0.35"/>
+                            </Border.Effect>
+
+                            <ContentPresenter HorizontalAlignment="Center"
+                                              VerticalAlignment="Center"/>
+
+                        </Border>
+
+                        <ControlTemplate.Triggers>
+
+                            <!-- Hover -->
+                            <Trigger Property="IsMouseOver" Value="True">
+
+                                <Setter TargetName="border"
+                                        Property="Background"
+                                        Value="#183243"/>
+
+                                <Setter Property="Foreground"
+                                        Value="#FFFFFF"/>
+
+                            </Trigger>
+
+                            <!-- Pressed -->
+                            <Trigger Property="IsPressed" Value="True">
+
+                                <Setter TargetName="border"
+                                        Property="Background"
+                                        Value="#0B141C"/>
+
+                                <Setter TargetName="border"
+                                        Property="BorderBrush"
+                                        Value="#8BE0FF"/>
+
+                            </Trigger>
+
+                        </ControlTemplate.Triggers>
+
+                    </ControlTemplate>
+
+                </Setter.Value>
+
+            </Setter>
+
+        </Style>
+
+    </Window.Resources>
+
+    <Grid Margin="15">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Header -->
+        <Border Background="#101820"
+                CornerRadius="12"
+                Padding="20"
+                Margin="0,0,0,15">
+
+            <StackPanel>
+
+                <TextBlock x:Name="GlitchTitle"
+                           Text=":: REPOSHIELD ::"
+                           Foreground="#4FC3FF"
+                           FontSize="44"
+                           FontWeight="Black"
+                           FontFamily="Consolas"
+                           HorizontalAlignment="Center">
+
+                    <TextBlock.Effect>
+                        <DropShadowEffect Color="#4FC3FF"
+                                          BlurRadius="25"
+                                          ShadowDepth="0"
+                                          Opacity="1"/>
+                    </TextBlock.Effect>
+
+                    <TextBlock.Triggers>
+
+                        <EventTrigger RoutedEvent="Loaded">
+
+                            <BeginStoryboard>
+
+                                <Storyboard RepeatBehavior="Forever">
+
+                                    <!-- Bates Motel Style Flicker -->
+                                    <DoubleAnimationUsingKeyFrames
+                                        Storyboard.TargetProperty="Opacity">
+
+                                        <DiscreteDoubleKeyFrame Value="1" KeyTime="0:0:0"/>
+                                        <DiscreteDoubleKeyFrame Value="0.2" KeyTime="0:0:0.08"/>
+                                        <DiscreteDoubleKeyFrame Value="1" KeyTime="0:0:0.12"/>
+                                        <DiscreteDoubleKeyFrame Value="0.4" KeyTime="0:0:0.18"/>
+                                        <DiscreteDoubleKeyFrame Value="1" KeyTime="0:0:0.25"/>
+                                        <DiscreteDoubleKeyFrame Value="0.1" KeyTime="0:0:0.30"/>
+                                        <DiscreteDoubleKeyFrame Value="1" KeyTime="0:0:0.38"/>
+                                        <DiscreteDoubleKeyFrame Value="1" KeyTime="0:0:1.8"/>
+
+                                    </DoubleAnimationUsingKeyFrames>
+
+                                </Storyboard>
+
+                            </BeginStoryboard>
+
+                        </EventTrigger>
+
+                    </TextBlock.Triggers>
+
+                </TextBlock>
+
+                <TextBlock Text="AI-Powered Repository Security Scanner"
+                           FontSize="14"
+                           Foreground="#4FC3FF"
+                           HorizontalAlignment="Center"
+                           Margin="0,5,0,0"/>
+
+            </StackPanel>
+
+        </Border>
+
+        <!-- Repo Input -->
+        <Border Grid.Row="1"
+                Background="#101820"
+                CornerRadius="12"
+                Padding="15"
+                Margin="0,0,0,15">
+
+            <Grid>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBox x:Name="GitHub_URL"
+                         Text="https://github.com/owner/repository"
+                         Foreground="Gray"
+                         Background="#070B10"
+                         BorderBrush="#30363D"
+                         FontFamily="Consolas"
+                         FontSize="14"
+                         Padding="10"
+                         Height="42"
+                         GotFocus="GitHub_URL_GotFocus"
+                         LostFocus="GitHub_URL_LostFocus"/>
+
+                <Button Grid.Column="1"
+                        Content="Browse Folder"
+                        Height="42"
+                        Width="150"
+                        Click="Browse_Folder_Click"/>
+
+                <Button Grid.Column="2"
+                        Content="Scan Repository"
+                        Height="42"
+                        Width="160"
+                        Click="Scan_Repo_Click"/>
+
+            </Grid>
+
+        </Border>
+
+        <!-- Main Panels -->
+        <Grid Grid.Row="2">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="3*"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Findings -->
+            <Border Background="#101820"
+                    CornerRadius="12"
+                    Padding="15"
+                    Margin="0,0,10,0">
+
+                <Grid>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Text="Threat Findings"
+                               FontSize="22"
+                               FontWeight="Bold"
+                               Foreground="White"
+                               Margin="0,0,0,10"/>
+
+                    <TextBlock x:Name="RiskScoreTextBlock"
+                               Grid.Row="1"
+                               Text="Risk Score: 0/100"
+                               FontSize="16"
+                               FontWeight="Bold"
+                               Foreground="#4FC3FF"
+                               Margin="0,0,0,10"/>
+
+                    <ListBox x:Name="FindingsListBox"
+                             Grid.Row="2"
+                             Background="#070B10"
+                             Foreground="#4FC3FF"
+                             BorderBrush="#30363D"
+                             FontFamily="Consolas"
+                             FontSize="14"
+                             Padding="10"/>
+
+                    <Button x:Name="AnalyzeAiButton"
+                            Grid.Row="3"
+                            Content="Analyze with Local AI"
+                            Height="48"
+                            Click="AnalyzeAiButton_Click"/>
+
+                </Grid>
+
+            </Border>
+
+            <!-- AI Output -->
+            <Border Grid.Column="1"
+                    Background="#101820"
+                    CornerRadius="12"
+                    Padding="15">
+
+                <Grid>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Text="AI Analysis / Report"
+                               FontSize="22"
+                               FontWeight="Bold"
+                               Foreground="White"
+                               Margin="0,0,0,15"/>
+
+                    <TextBox x:Name="AiFeedbackTextBox"
+                             Grid.Row="1"
+                             Background="#070B10"
+                             Foreground="#4FC3FF"
+                             BorderBrush="#30363D"
+                             FontFamily="Consolas"
+                             FontSize="14"
+                             TextWrapping="Wrap"
+                             AcceptsReturn="True"
+                             VerticalScrollBarVisibility="Auto"
+                             IsReadOnly="True"
+                             Padding="15"/>
+
+                </Grid>
+
+            </Border>
+
+        </Grid>
+
+    </Grid>
+
+</Window>
