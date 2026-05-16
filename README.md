@@ -6,10 +6,6 @@ Detect suspicious scripts, risky repositories, dangerous PowerShell behavior, an
 
 ---
 
-![RepoShield Banner](images/banner.png)
-
----
-
 # ⚡ FEATURES
 
 ✅ Recursive folder and repository scanning  
