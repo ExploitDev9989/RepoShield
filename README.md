@@ -41,17 +41,19 @@ The AI scanner can explain:
 
 ---
 
-# 🖼️ SCREENSHOTS
+# 🖼️ Screenshots
 
-## Main Scanner UI
-![Scanner UI](images/scanner-ui.png)
+## Main Interface
+![Main UI](media/main-ui.png)
 
-## AI Threat Analysis
-![AI Analysis](images/ai-analysis.png)
+## Threat Detection
+![Threat Findings](media/threat-findings.png)
 
-## Suspicious Findings
-![Threat Findings](images/threat-findings.png)
+## AI Analysis Loading
+![AI Loading](media/ai-loading.png)
 
+## Full AI Threat Analysis
+![AI Analysis](media/ai-analysis.png)
 ---
 
 # 🚀 INSTALLATION
