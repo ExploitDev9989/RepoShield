@@ -5,7 +5,7 @@
         Height="700"
         Width="1200"
         WindowStartupLocation="CenterScreen"
-        Background="#070B10" Icon="/Shield.png">
+        Background="#070B10">
 
     <Window.Resources>
 
